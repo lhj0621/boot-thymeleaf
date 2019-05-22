@@ -19,7 +19,7 @@ function fire_ajax_submit() {
     });
 
     var json =JSON.stringify(formArray)
-    console.log(json); //전손 값 확인
+    console.log(json);
     $.ajax({
         type: 'post',
         contentType: 'application/json; charset=utf-8',

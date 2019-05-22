@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Registration Form</title>
+<title>Delete User</title>
 <th:block th:include="fragments/header"></th:block>
 <script type="text/javascript" src="js/main.js"></script>
 </head>
@@ -14,10 +14,10 @@
 	<div class="container" style="min-height: 500px">
 
 		<div class="starter-template">
-			<h1>방문을 환영합니다.11</h1>
+			<h1>회원탈퇴 요청이 정상 처리 되었습니다.</h1>
+			<span th:text="${name}"></span>
 
 		</div>
-
 	</div>
 
 	<th:block th:include="fragments/footer"></th:block>
