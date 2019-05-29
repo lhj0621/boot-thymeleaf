@@ -19,7 +19,9 @@ import idu.cs.domain.User;
 import idu.cs.exception.ResourceNotFoundException;
 import idu.cs.repository.UserRepository;
 
-@Controller
+@Controller //@Component, @Service, @Repository
+//Spring Framwork에게 이 클래스로 부터 작성된 객체는 Controller 역활을 함을 알려줌
+//Sprng 이 클래스로 부터 Bean 객체를
 public class UserController {
    @Autowired UserRepository userRepo; // Dependency Injection
    
@@ -48,7 +50,12 @@ public class UserController {
       return "redirect:/";
      
    }
-   
+   @GetMapping("/logout")
+   public String logoutUser(HttpSession session) {
+	  session.removeAttribute("user");
+	  //session.invalidate();//세션에 있는걸 모두 다 지워버림
+	   return "redirect:/";
+   }
    @GetMapping("/user-register-form")
    public String getRegForm(Model model) {
       return "register";
