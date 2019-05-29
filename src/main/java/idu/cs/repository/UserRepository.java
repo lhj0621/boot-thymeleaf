@@ -8,6 +8,7 @@ import idu.cs.domain.User;
 
 public interface UserRepository 
 	extends JpaRepository<User, Long> {
-	public List<User> findByName(String name);
-
+	List<User> findByName(String name);
+	List<User> findByCompany(String company);
+	User findByUserId(String userId); //ByUserId == where userid=''
 }
