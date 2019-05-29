@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -37,60 +38,57 @@
                     <div class="breadcrumb_iner text-center">
                         <div class="breadcrumb_iner_item">
 							<h2>Elements</h2>
-                            <p>Home <span>//</span>Elements</p>
+                            <p>Home <span>//</span>회원 수정</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+	<!-- End banner Area -->
 	
-
-	
-	
-	
-
-	
-	
-	
-
-	<!-- Start Align Area -->
 	<div class="whole-wrap">
 		<div class="container box_1170">
 			
 			
 			
 			
+			
+			
+			
 			<div class="section-top-border">
-				<h3 class="mb-30">Table</h3>
-				<div class="progress-table-wrap">
-					<div class="progress-table">
-						<div class="table-head">
-							<div class="serial">#</div>
-							<div class="country">UserID</div>
-							<div class="visit">Name</div>
-							<div class="percentage">Company</div>
-						</div>
-						<div th:each="user : ${users}">
-						<div class="table-row">
-							<div class="serial">
-							<a th:href="@{/users/{id}(id=${user.id})}">
-							<span th:text="${user.id}"></span></a></div>
-							<div class="country"><span th:text="${user.userId}"></span></div>
-							<div class="visit"><span th:text="${user.name}"></span></div>
-							<div class="percentage"><span th:text="${user.company}"></span></div>
-						</div>
-						</div>
+				<div class="row">
+				<div class="col-lg-2 col-md-4 mt-sm-30">
+				</div>
+					<div class="col-lg-8 col-md-8">
+						<h3 class="mb-30">회원수정</h3>
+						<!-- <form th:action="@{'/login'}" th:method="post"> -->
+						<form action="/users" method="post" id="register_form">
+							<div class="mt-10">
+								<input type="text" name="UserId" placeholder="사용자 아이디" onfocus="this.placeholder = ''" onblur="this.placeholder = '사용자 아이디'" required="" class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="password" name="UserPw" placeholder="사용자 암호" onfocus="this.placeholder = ''" onblur="this.placeholder = '사용자 암호'" required="" class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="text" name="name" placeholder="사용자 이름" onfocus="this.placeholder = ''" onblur="this.placeholder = '사용자 이름'" required="" class="single-input">
+							</div>
+							<div class="mt-10">
+								<input type="text" name="company" placeholder="사용자 회사" onfocus="this.placeholder = ''" onblur="this.placeholder = '사용자 회사'" required="" class="single-input">
+							</div>
+							<div class="form-group mt-3">
+              					<button type="submit" class="button button-contactForm btn_4">회원 가입</button>
+            				</div>
+            				</form>
+            			</div>
+					</div>
+					<div class="col-lg-2 col-md-4 mt-sm-30">
 					</div>
 				</div>
 			</div>
-			
-			
-			
 		</div>
 	</div>
-	<!-- End Align Area -->
-
+	
 	<!-- footer part start-->
     <footer class="footer-area">
         <div class="container">
@@ -111,7 +109,9 @@
                         <form action="#">
                             <div class="form-group">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+                                    <input type="text" class="form-control" placeholder='Enter email address'
+                                        onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter email address'">
                                     <div class="input-group-append">
                                         <button class="btn" type="button"><i class="ti-angle-right"></i></button>
                                     </div>
@@ -167,7 +167,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright ©<script>document.write(new Date().getFullYear());</script>2019 All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                             </div>
                         </div>
@@ -201,6 +201,6 @@ Copyright ©<script>document.write(new Date().getFullYear());</script>2019 All r
     <script src="js/slick.min.js"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
+</body>
 
-
-</body></html>
+</html>
