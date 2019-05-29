@@ -23,6 +23,7 @@ public class User {
 	
 	public User() {}
 
+	
 	public User(Long id, String userId, String userPw, String name, String company) {
 		super();
 		this.id = id;
