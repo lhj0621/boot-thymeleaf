@@ -75,16 +75,27 @@ public class UserController {
       return "register";
    }
    
-   @GetMapping("/user-update-form")
-   public String getupdateForm(Model model) {
-      return "update";
-   }
+  // @GetMapping("/user-update-form")
+  // public String getupdateForm(Model model) {
+  //    return "update";
+  // }
    
    @PostMapping("/users")
    public String createUser(@Valid  User user, Model model) {
 	  userService.saveUser(user);
       return "redirect:/users";//get 방식으로 해당 url에 재지정함
    }
+   @GetMapping("/user-update-form")
+   public String getupdateForm(Model model,HttpSession session) {
+	   // 서비스를 통해 리파지터리로 부터 정보를 가져와야 하나 세션에 저장해두었으므로 정보를 활용
+	   User user = (User)session.getAttribute("user");
+	   
+	   User sessionUser = userService.getUserById(user.getId());
+	   model.addAttribute("user",sessionUser);
+	   
+      return "info";
+   }
+   
    /*
    @GetMapping("/users/{id}")
    public String getUserById(@PathVariable(value = "id") Long userId, Model model)
@@ -105,20 +116,19 @@ public class UserController {
       return "userlist";
       //return ResponseEntity.ok().body(user);
    }
-   
+   */
    @PutMapping("/users/{id}") // @PatchMapping
-   public String updateUser(@PathVariable(value = "id") Long userId, @Valid UserEntity userDetails, Model model,HttpSession session) {
-      UserEntity user = userRepo.findById(userId).get(); // user는 DB로 부터 읽어온 객체 
-      System.out.println("들어옴"+userId);
-      user.setUserId(userDetails.getUserId()); // userDetails가 전송한 객체
-      user.setUserPw(userDetails.getUserPw());
-      user.setName(userDetails.getName());
-      user.setCompany(userDetails.getCompany());
-      userRepo.save(user); // 저장!
-      session.setAttribute("user", user);
-      return "redirect:/users";
+   public String updateUser(@PathVariable(value = "id") Long id, 
+           @Valid User user, Model model, HttpSession session) {
+     /*
+      * updateUser 객체는 입력 폼 내용 : id 값이 없음,
+      */
+	   user.setId(userService.getUserById(id).getId()); //Db에서 가져왔지만 수정
+       userService.updateUser(user);
+       session.setAttribute("user", user);
+       return "redirect:/users";
    }
-   
+   /*
    @DeleteMapping("/users/{id}")
    public String deleteUser(@PathVariable(value = "id") Long userId, Model model) {
       UserEntity user = userRepo.findById(userId).get();
